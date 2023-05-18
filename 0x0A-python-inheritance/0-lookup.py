@@ -1,12 +1,9 @@
+#!/usr/bin/python3
 
-dule for lookup method.'''
+
+'''Function to return list'''
 
 
 def lookup(obj):
-    '''Looks up object attributes and methods.
-    Args:
-        obj (object): the object to list.
-    Returns:
-        list: the list of attributes.
-    '''
+    '''List methods and attributes'''
     return dir(obj)
