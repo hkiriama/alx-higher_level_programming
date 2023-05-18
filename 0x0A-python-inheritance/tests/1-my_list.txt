@@ -1,82 +1,95 @@
-The ``1-my_list`` module
-============================
+==================
+|  TEST MY LIST  |
+==================
 
-Using ``1-mylist``
----------------------
+``1-my_list`` a class MyList that inherits from list
+::
 
-Import function from module:
-    	>>> MyList = __import__('1-my_list').MyList
+Importing the function from the module:
 
+	>>> MyList = __import__("1-my_list").MyList
+	
 
-Intranet example test 1:
+Documentation
+=============
+Here we verify if our modules and functions are documented, for Holberton requirements is a must.
+we use __doc__ to verify module's and function's Documentation
+
+	>>> module_doc = __import__("1-my_list").__doc__
+	>>> print(len(module_doc) > 0)
+	True
+
+	>>> class_doc = __import__("1-my_list").MyList.__doc__
+	>>> print(len(class_doc) > 0)
+	True
+
+	>>> method_doc = __import__("1-my_list").MyList.print_sorted.__doc__
+	>>> print(len(method_doc) > 0)
+	True
+
+Test Class
+==========
+
+``print_sorted`` will take a list, it will sorted and printed
+
+Create a object of type List
+
 	>>> my_list = MyList()
+	>>> type(my_list)
+	<class '1-my_list.MyList'>
+
+	>>> isinstance(my_list, list)
+	True
+
+Characteristics: append() and pop()
+Testing append()
+
 	>>> my_list.append(1)
 	>>> my_list.append(4)
-	>>> my_list.append(2)
-	>>> my_list.append(3)
-	>>> my_list.append(5)
+	>>> my_list.append(9)
 	>>> print(my_list)
-	[1, 4, 2, 3, 5]
+	[1, 4, 9]
 
-Intranet example test 2:
-	>>> my_list = MyList()
-	>>> my_list.append(1)
-	>>> my_list.append(4)
-	>>> my_list.append(2)
-	>>> my_list.append(3)
-	>>> my_list.append(5)
-	>>> my_list.print_sorted()
-	[1, 2, 3, 4, 5]
+Testing pop():
 
-Correct Class Type test:
-    	>>> ml = MyList()
-    	>>> type(ml) == MyList
-    	True
+	>>> my_list.pop(-1)
+	9
 
-Correct Instance test:
-    	>>> ml = MyList()
-    	>>> isinstance(ml, list)
-    	True
+	>>> print(my_list)
+	[1, 4]
 
-print_sorted method is an instance method:
-    	>>> type(MyList.__dict__['print_sorted'])
-    	<class 'function'>
+Test cases
+==========
 
-print_sorted method called with 1 arg:
-	>>> ml = MyList()
-    	>>> ml.print_sorted([4, 2, 5])
-    	Traceback (most recent call last):
-    	TypeError: print_sorted() takes 1 positional argument but 2 were given
 
-print_sorted method called with 2 args:
-	>>> ml = MyList()
-    	>>> ml.print_sorted([4, 2, 5], 1)
-    	Traceback (most recent call last):
-    	TypeError: print_sorted() takes 1 positional argument but 3 were given
+``print_sorted`` will take a list, it will sorted and printed
 
-Empty list test:
-    	>>> ml = MyList()
-    	>>> ml.print_sorted()
-    	[]
+Testing if the list is sorted:
 
-Normal list test:
-    	>>> ml = MyList([6, 16, 2])
-    	>>> ml.print_sorted()
-    	[2, 6, 16]
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
 
-Negative ints list test:
-    	>>> ml = MyList([-1000, -98, -232565, 0, -23423434, -123])
-    	>>> ml.print_sorted()
-    	[-23423434, -232565, -1000, -123, -98, 0]
+Testing with negative numbers:
 
-Original list unchanged:
-    	>>> ml = MyList([2, 10, 1, -10, 20, 100, 0])
-    	>>> ml.print_sorted()
-    	[-10, 0, 1, 2, 10, 20, 100]
-    	>>> ml
-    	[2, 10, 1, -10, 20, 100, 0]
-
-List already in order:
-	>>> ml = MyList([-20, -10, 0, 10, 20])
-	>>> ml.print_sorted()
-	[-20, -10, 0, 10, 20]
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(2)
+    >>> my_list.append(-1)
+    >>> my_list.append(5)
+    >>> my_list.append(-2)
+    >>> print(my_list)
+    [1, 2, -1, 5, -2]
+    >>> my_list.print_sorted()
+    [-2, -1, 1, 2, 5]
+    >>> print(my_list)
+    [1, 2, -1, 5, -2]

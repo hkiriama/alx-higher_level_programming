@@ -1,17 +1,11 @@
+#!/usr/bin/python3
 
-dule for MyList class '''
+
+'''File to class MyList'''
 
 
 class MyList(list):
-    ''' Custom list class'''
-
+    '''Class MyList inheret object list'''
     def print_sorted(self):
-        ''' Instance method:
-            print sorted list
-        '''
+        '''Print list sorted'''
         print(sorted(self))
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile("tests/1-my_list.txt")
